@@ -8,7 +8,7 @@ Based on a package by ETHZ-ASL. Removed dependency on `catkin_simple`.
 
 ### Installation
 
-This package was tested on Ubuntu 16.04  
+This package was tested on Ubuntu 16.04 and 18.04  
 
 Copy this package into the `src` directory of your catkin workspace.  
 Build your catkin workspace:  
