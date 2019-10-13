@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>test_opencv</name>
+  <version>2.0.0</version>
+  <description>Some tests to check your installation of OpenCV and the 'opencv2_catkin' package.</description>
+
+  <maintainer email="dbworth@gmail.com">David Butterworth</maintainer>
+  <author>David Butterworth</author>
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+
+  <!-- depend>cv_bridge</depend --> <!-- Use OpenCV provided by ROS -->
+  <depend>opencv2_catkin</depend>
+  
+</package>

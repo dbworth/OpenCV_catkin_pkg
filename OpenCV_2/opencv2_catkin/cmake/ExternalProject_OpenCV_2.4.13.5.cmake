@@ -1,0 +1,33 @@
+#
+# OpenCV 2.4.13.5
+#
+
+SET(OPENCV_SRC_PATH "opencv2_src")
+SET(OPENCV_BUILD_PATH "opencv2_build")
+ExternalProject_Add(opencv2_src
+  URL https://github.com/opencv/opencv/archive/2.4.13.5.zip
+  URL_MD5 04ea6ac9255df8aa4b419ed57d20b743
+  UPDATE_COMMAND ""
+  SOURCE_DIR ${OPENCV_SRC_PATH}
+  BINARY_DIR ${OPENCV_BUILD_PATH}
+  CONFIGURE_COMMAND cd ../${OPENCV_BUILD_PATH} && cmake
+    -DWITH_TBB=ON
+    -DBUILD_NEW_PYTHON_SUPPORT=ON 
+    -DWITH_V4L=ON 
+    -DINSTALL_C_EXAMPLES=OFF
+    -DINSTALL_PYTHON_EXAMPLES=OFF 
+    -DBUILD_EXAMPLES=OFF
+    -DWITH_QT=OFF # Needed by clang under Ubuntu 14.04 and GTK_WIDGET(cvGetWindowHandle(...)) with gcc (image_view) 
+    -DWITH_OPENGL=ON 
+    -DWITH_VTK=ON
+    -DENABLE_PRECOMPILED_HEADERS=OFF
+    -DCMAKE_INSTALL_PREFIX=${CATKIN_DEVEL_PREFIX} 
+    -DBUILD_SHARED_LIBS=ON 
+    -DWITH_CUDA=OFF 
+    -DWITH_OPENCL=OFF
+    -DBUILD_opencv_gpu=OFF 
+    -DBUILD_opencv_ts=OFF 
+    -DBUILD_TESTS=OFF ../${OPENCV_SRC_PATH}
+  BUILD_COMMAND cd ../${OPENCV_BUILD_PATH} && make -j8
+  INSTALL_COMMAND cd ../${OPENCV_BUILD_PATH} && make install -j8
+)
